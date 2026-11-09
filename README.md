@@ -1,137 +1,212 @@
-# Project Falcon ERP - نظام إدارة قطع غيار السيارات
+🦅 Smart Retail Management System – Project Falcon
 
-نظام ERP متكامل لإدارة قطع غيار السيارات مع واجهة أمامية (React + TypeScript) وخلفية (Node.js + Express + MySQL).
+A modern web-based retail management system designed to simplify sales operations, inventory tracking, purchasing, and business management.
 
-## المتطلبات
+Project Falcon provides an integrated solution for managing retail stores through a responsive dashboard, Point of Sale (POS), product management, inventory control, and financial reporting.
 
-- Node.js 18+
-- MySQL 8.0+
-- npm أو pnpm
+🚀 Features
 
-## تثبيت قاعدة البيانات MySQL
+📊 Dashboard
 
-```bash
-# 1. سجل دخول إلى MySQL
-mysql -u root -p
+* Overview of sales and revenue.
+* Total products and inventory statistics.
+* Low-stock monitoring.
+* Business performance insights.
 
-# 2. أنشئ قاعدة البيانات
-CREATE DATABASE project_falcon CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+🛒 Point of Sale (POS)
 
-# 3. أنشئ مستخدم (اختياري)
-CREATE USER 'falcon'@'localhost' IDENTIFIED BY 'your_password';
-GRANT ALL PRIVILEGES ON project_falcon.* TO 'falcon'@'localhost';
-FLUSH PRIVILEGES;
-EXIT;
-```
+* Fast sales processing.
+* Shopping cart management.
+* Automatic invoice generation.
+* Sales transaction tracking.
 
-## إعداد المشروع
+📦 Product Management
 
-```bash
-# 1. تثبيت اعتمادات الواجهة الأمامية
+* Add, edit, and manage products.
+* Organize products into categories.
+* Manage product prices and details.
+
+📋 Inventory Management
+
+* Real-time stock tracking.
+* Monitor stock movements.
+* Low-stock alerts.
+
+💰 Purchases & Sales
+
+* Record purchase transactions.
+* Manage customer sales.
+* Track transaction history.
+
+🌍 Multi-Currency Support
+
+* Support for multiple currencies.
+* Currency management.
+* Exchange rate management.
+* Multi-currency sales and purchasing.
+
+👥 Customer Management
+
+* Maintain customer records.
+* View customer information.
+* Track customer transactions.
+
+📈 Reports
+
+* Sales reports.
+* Inventory reports.
+* Business performance summaries.
+
+🔐 Authentication
+
+* Secure login system.
+* JWT-based authentication.
+* Protected API routes.
+
+🛠️ Technology Stack
+
+Frontend
+
+* React 19
+* TypeScript
+* Vite
+* Tailwind CSS
+* React Router
+* Axios
+* Framer Motion
+* Lucide React
+
+Backend
+
+* Node.js
+* Express.js
+* TypeScript
+* REST API
+* JWT Authentication
+
+Database
+
+* MySQL
+* MySQL2
+
+📁 Project Structure
+
+project-falcon/
+│
+├── public/
+│
+├── server/
+│   ├── src/
+│   │   ├── middleware/
+│   │   ├── migrations/
+│   │   ├── routes/
+│   │   ├── db.ts
+│   │   ├── schema.sql
+│   │   ├── seed.ts
+│   │   └── server.ts
+│   │
+│   ├── .env.example
+│   └── package.json
+│
+├── src/
+│   ├── api/
+│   ├── components/
+│   ├── context/
+│   ├── hooks/
+│   ├── pages/
+│   ├── App.tsx
+│   └── main.tsx
+│
+├── index.html
+├── package.json
+└── README.md
+
+⚙️ Installation & Setup
+
+1. Clone the Repository
+
+git clone https://github.com/starboy679/Smart-retail-management-system.git
+cd Smart-retail-management-system
+
+2. Install Frontend Dependencies
+
 npm install
 
-# 2. تثبيت اعتمادات الخلفية
-cd server && npm install
+3. Install Backend Dependencies
 
-# 3. إعداد متغيرات البيئة
-cp server/.env.example server/.env
-# عدل server/.env ببيانات قاعدة البيانات:
-# DB_HOST=localhost
-# DB_USER=root
-# DB_PASSWORD=your_password
-# DB_NAME=project_falcon
-# JWT_SECRET=your_secret_key
-# PORT=5000
-```
-
-## تشغيل قاعدة البيانات (Schema + Seed Data)
-
-```bash
-# 1. أنشئ الجداول
-mysql -u root -p project_falcon < server/src/schema.sql
-
-# أو استخدم السكريبت المدمج:
-cd server && npx ts-node src/seed.ts
-```
-
-## تشغيل النظام
-
-### الطريقة 1: تشغيل الواجهة والخلفية معاً
-```bash
-npm run dev:full
-```
-
-### الطريقة 2: تشغيل منفصل
-```bash
-# ترمنال 1 - الخلفية
 cd server
+npm install
+
+4. Configure Environment Variables
+
+Create a .env file inside the server directory.
+
+Use the following configuration:
+
+DB_HOST=localhost
+DB_USER=root
+DB_PASSWORD=
+DB_NAME=project_falcon
+JWT_SECRET=your_secure_secret_key
+PORT=5000
+
+Update the database credentials according to your MySQL configuration.
+
+5. Database Setup
+
+* Start your MySQL server.
+* Create a database named project_falcon.
+* Import the database schema from server/src/schema.sql.
+* Apply any additional migrations if required.
+
+6. Run the Backend
+
+From the server directory:
+
 npm run dev
 
-# ترمنال 2 - الواجهة الأمامية
+The backend API will run on:
+
+http://localhost:5000
+
+7. Run the Frontend
+
+Open another terminal in the project root:
+
 npm run dev
-```
 
-### بيانات الدخول التجريبية
-- **البريد:** admin@falcon.com
-- **كلمة المرور:** admin123
+Open the local development URL provided by Vite.
 
-## بناء للإنتاج
+🏗️ Production Build
 
-```bash
-# بناء الواجهة الأمامية
+Build the frontend:
+
 npm run build
 
-# بناء الخلفية
-cd server && npm run build
-```
+Build the backend:
 
-## هيكل المشروع
+npm run server:build
 
-```
-project-falcon/
-├── src/                    # واجهة أمامية (React + Vite)
-│   ├── api/               # Axios instance
-│   ├── context/           # AuthContext
-│   ├── pages/             # Login page
-│   └── App.tsx            # Dashboard
-├── server/                # خلفية (Node.js + Express)
-│   ├── src/
-│   │   ├── db.ts          # MySQL connection pool
-│   │   ├── schema.sql     # Database schema
-│   │   ├── seed.ts        # Seed data
-│   │   ├── server.ts      # Main server
-│   │   ├── middleware/    # JWT auth
-│   │   └── routes/        # API routes
-│   └── package.json
-└── package.json
-```
+Start the production backend:
 
-## API Endpoints
+cd server
+npm start
 
-| Endpoint | Method | Description |
-|----------|--------|-------------|
-| /api/auth/login | POST | تسجيل الدخول |
-| /api/auth/register | POST | تسجيل مستخدم |
-| /api/dashboard/kpi | GET | مؤشرات الأداء |
-| /api/dashboard/sales-chart | GET | مخطط المبيعات |
-| /api/dashboard/best-products | GET | أفضل المنتجات |
-| /api/dashboard/alerts | GET | التنبيهات |
-| /api/dashboard/operations | GET | العمليات |
-| /api/dashboard/batches | GET | دفعات الاستيراد |
-| /api/dashboard/exchange-rates | GET | أسعار العملات |
-| /api/products | GET/POST | المنتجات |
-| /api/invoices | GET/POST | الفواتير |
-| /api/suppliers | GET/POST | الموردين |
-| /api/customers | GET/POST | العملاء |
-| /api/batches | GET/POST | دفعات الاستيراد |
+🔒 Security Notes
 
-## التقنيات المستخدمة
+* Never upload .env files to GitHub.
+* Keep database credentials private.
+* Use a strong JWT secret.
+* Configure CORS for trusted frontend domains in production.
 
-- **Frontend:** React 19, TypeScript, Tailwind CSS, Vite, Lucide Icons
-- **Backend:** Node.js, Express, TypeScript, MySQL2
-- **Auth:** JWT, bcryptjs
-- **Database:** MySQL 8.0
+🎯 Project Objective
 
-## ترخيص
+Project Falcon aims to provide small and medium-sized retail businesses with a centralized platform for managing daily operations, improving inventory visibility, simplifying sales processing, and supporting better business decisions.
 
-© 2025 Project Falcon ERP
+⸻
+
+Project Name: Smart Retail Management System – Project Falcon
+
+Repository: GitHub
+
+Developed by: Abdalbagi Essameldein
