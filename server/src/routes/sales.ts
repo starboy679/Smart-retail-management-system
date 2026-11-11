@@ -1,7 +1,6 @@
 import { Router } from 'express';
 import pool from '../db';
 import { authMiddleware, requireRole } from '../middleware/auth';
-import { details } from 'framer-motion/client';
 
 const router = Router();
 router.use(authMiddleware);
@@ -23,10 +22,10 @@ router.get('/', async (req, res) => {
   try {
     const [rows] = await pool.query(
       `SELECT s.*, c.name as customer_name, u.name as user_name
-       FROM sales s
-       LEFT JOIN customers c ON s.customer_id = c.id
-       LEFT JOIN users u ON s.user_id = u.id
-       ORDER BY s.created_at DESC`
+      FROM sales s
+      LEFT JOIN customers c ON s.customer_id = c.id
+      LEFT JOIN users u ON s.user_id = u.id
+      ORDER BY s.created_at DESC`
     );
     res.json(rows);
   } catch (err) {
