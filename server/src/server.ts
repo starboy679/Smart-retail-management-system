@@ -1,6 +1,8 @@
 import express from 'express';
 import cors from 'cors';
-import dotenv from 'dotenv';
+
+import pool from './db';
+
 import authRoutes from './routes/auth';
 import dashboardRoutes from './routes/dashboard';
 import productRoutes from './routes/products';
@@ -15,14 +17,15 @@ import reportRoutes from './routes/reports';
 import userRoutes from './routes/users';
 import shopRoutes from './routes/shop';
 
-dotenv.config();
-
 const app = express();
+
 const PORT = process.env.PORT || 5000;
 
+// Middleware
 app.use(cors());
 app.use(express.json());
 
+// API Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/dashboard', dashboardRoutes);
 app.use('/api/products', productRoutes);
@@ -37,10 +40,35 @@ app.use('/api/reports', reportRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/shop', shopRoutes);
 
-app.get('/api/health', (req, res) => {
-  res.json({ status: 'ok', service: 'Project Falcon API' });
+// Health Check
+app.get('/api/health', async (req, res) => {
+  try {
+    const [rows] = await pool.query(
+      'SELECT DATABASE() AS database_name, NOW() AS server_time'
+    );
+
+    res.status(200).json({
+      status: 'ok',
+      service: 'Project Falcon API',
+      database: 'connected',
+      data: rows
+    });
+
+  } catch (error) {
+    console.error('Database health check failed:', error);
+
+    res.status(500).json({
+      status: 'error',
+      service: 'Project Falcon API',
+      database: 'disconnected'
+    });
+  }
 });
 
+// Start Server
 app.listen(PORT, () => {
+  console.log('================================');
+  console.log('Project Falcon API Started');
   console.log(`Server running on port ${PORT}`);
+  console.log('================================');
 });
