@@ -1,212 +1,107 @@
-🦅 Smart Retail Management System – Project Falcon
+A&A Auto Parts
 
-A modern web-based retail management system designed to simplify sales operations, inventory tracking, purchasing, and business management.
+A web-based auto parts management system designed to simplify store operations, including sales, inventory, purchasing, customer management, and reporting.
 
-Project Falcon provides an integrated solution for managing retail stores through a responsive dashboard, Point of Sale (POS), product management, inventory control, and financial reporting.
+Live Website: https://aa-auto-parts.vercel.app
 
-🚀 Features
+GitHub Repository: https://github.com/starboy679/Smart-retail-management-system
 
-📊 Dashboard
+Features
 
-* Overview of sales and revenue.
-* Total products and inventory statistics.
-* Low-stock monitoring.
-* Business performance insights.
+* Dashboard with sales, revenue, and inventory statistics.
+* Point of Sale (POS) and invoice generation.
+* Product and category management.
+* Inventory tracking and low-stock alerts.
+* Purchase and sales management.
+* Customer management.
+* Multi-currency and exchange rate management.
+* Sales and inventory reports.
+* JWT authentication and protected API routes.
 
-🛒 Point of Sale (POS)
+Technology Stack
 
-* Fast sales processing.
-* Shopping cart management.
-* Automatic invoice generation.
-* Sales transaction tracking.
+Frontend: React 19, TypeScript, Vite, Tailwind CSS, React Router.
 
-📦 Product Management
+Backend: Node.js, Express.js, TypeScript, REST API, JWT.
 
-* Add, edit, and manage products.
-* Organize products into categories.
-* Manage product prices and details.
+Database: MySQL, MySQL2.
 
-📋 Inventory Management
+UI Libraries: Framer Motion, Lucide React.
 
-* Real-time stock tracking.
-* Monitor stock movements.
-* Low-stock alerts.
+Project Structure
 
-💰 Purchases & Sales
+* src/ – Frontend application.
+* src/api/ – API integration.
+* src/components/ – Reusable components.
+* src/pages/ – Application pages.
+* server/src/routes/ – Backend API routes.
+* server/src/middleware/ – Authentication and authorization.
+* server/src/db.ts – Database connection.
 
-* Record purchase transactions.
-* Manage customer sales.
-* Track transaction history.
+Local Installation
 
-🌍 Multi-Currency Support
-
-* Support for multiple currencies.
-* Currency management.
-* Exchange rate management.
-* Multi-currency sales and purchasing.
-
-👥 Customer Management
-
-* Maintain customer records.
-* View customer information.
-* Track customer transactions.
-
-📈 Reports
-
-* Sales reports.
-* Inventory reports.
-* Business performance summaries.
-
-🔐 Authentication
-
-* Secure login system.
-* JWT-based authentication.
-* Protected API routes.
-
-🛠️ Technology Stack
-
-Frontend
-
-* React 19
-* TypeScript
-* Vite
-* Tailwind CSS
-* React Router
-* Axios
-* Framer Motion
-* Lucide React
-
-Backend
-
-* Node.js
-* Express.js
-* TypeScript
-* REST API
-* JWT Authentication
-
-Database
-
-* MySQL
-* MySQL2
-
-📁 Project Structure
-
-project-falcon/
-│
-├── public/
-│
-├── server/
-│   ├── src/
-│   │   ├── middleware/
-│   │   ├── migrations/
-│   │   ├── routes/
-│   │   ├── db.ts
-│   │   ├── schema.sql
-│   │   ├── seed.ts
-│   │   └── server.ts
-│   │
-│   ├── .env.example
-│   └── package.json
-│
-├── src/
-│   ├── api/
-│   ├── components/
-│   ├── context/
-│   ├── hooks/
-│   ├── pages/
-│   ├── App.tsx
-│   └── main.tsx
-│
-├── index.html
-├── package.json
-└── README.md
-
-⚙️ Installation & Setup
-
-1. Clone the Repository
+1. Clone the repository
 
 git clone https://github.com/starboy679/Smart-retail-management-system.git
 cd Smart-retail-management-system
 
-2. Install Frontend Dependencies
+2. Install frontend dependencies
 
 npm install
 
-3. Install Backend Dependencies
+3. Install backend dependencies
 
 cd server
 npm install
 
-4. Configure Environment Variables
+4. Configure environment variables
 
-Create a .env file inside the server directory.
-
-Use the following configuration:
+Create a .env file inside the server directory:
 
 DB_HOST=localhost
 DB_USER=root
-DB_PASSWORD=
-DB_NAME=project_falcon
-JWT_SECRET=your_secure_secret_key
+DB_PASSWORD=your_mysql_password
+DB_NAME=your_database_name
+JWT_SECRET=your_secure_secret
 PORT=5000
 
-Update the database credentials according to your MySQL configuration.
+5. Set up the database
 
-5. Database Setup
+* Start MySQL.
+* Create the database.
+* Import server/src/schema.sql.
+* Apply any additional required migrations.
 
-* Start your MySQL server.
-* Create a database named project_falcon.
-* Import the database schema from server/src/schema.sql.
-* Apply any additional migrations if required.
-
-6. Run the Backend
-
-From the server directory:
+6. Start the backend
 
 npm run dev
 
-The backend API will run on:
+7. Start the frontend
 
-http://localhost:5000
-
-7. Run the Frontend
-
-Open another terminal in the project root:
+From the project root, open another terminal:
 
 npm run dev
 
-Open the local development URL provided by Vite.
+Production Deployment
 
-🏗️ Production Build
+Service	Platform
+Frontend	Vercel
+Backend API	Railway
+Database	Railway MySQL
 
-Build the frontend:
+Configure VITE_API_URL with the production backend API URL.
 
-npm run build
+Security
 
-Build the backend:
-
-npm run server:build
-
-Start the production backend:
-
-cd server
-npm start
-
-🔒 Security Notes
-
-* Never upload .env files to GitHub.
+* Never commit .env files.
 * Keep database credentials private.
 * Use a strong JWT secret.
-* Configure CORS for trusted frontend domains in production.
+* Restrict CORS to trusted frontend domains.
 
-🎯 Project Objective
+Project Goal
 
-Project Falcon aims to provide small and medium-sized retail businesses with a centralized platform for managing daily operations, improving inventory visibility, simplifying sales processing, and supporting better business decisions.
+A&A Auto Parts aims to provide an integrated solution for managing auto parts store operations, improving inventory visibility, simplifying sales, and supporting business decisions.
 
 ⸻
-
-Project Name: Smart Retail Management System – Project Falcon
-
-Repository: GitHub
 
 Developed by: Abdalbagi Essameldein
